@@ -15,9 +15,9 @@ class TransactionServiceTest {
 	void testNumberOfTransactions() {
 		TransactionService txService = new TransactionService();
 		
-		List<Transaction> transactions = txService.findAllByAccountNumber("12345");
+		List<Transaction> transactions = txService.findAllByAccountNumber(12345);
 		int txCount = transactions.size();
-		assertEquals(5, txCount);
+		assertEquals(1, txCount);
 	}
 
 }

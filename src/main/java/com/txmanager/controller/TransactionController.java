@@ -3,7 +3,7 @@ package com.txmanager.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,19 +12,18 @@ import com.txmanager.domain.Transaction;
 import com.txmanager.service.TransactionService;
 
 @RestController
-@RequestMapping(value="v1/txmanager")
+@RequestMapping("/transactions")
 public class TransactionController {
 	@Autowired
 	private TransactionService txService;
 	
-	@RequestMapping(value="/transactions/{accountNumber}")
-	public ResponseEntity<List<Transaction>> getTransactions(
-		@PathVariable("accountNamber")	String accountNumber
-	)
+	@GetMapping("/{accountNumber}")
+	public List<Transaction> getTransactions(@PathVariable("accountNumber")	final Integer accountNumber)
 	{
+		
 		List<Transaction> transactions = txService.findAllByAccountNumber(accountNumber);
 		
-		return ResponseEntity.ok(transactions);
+		return transactions;
 	}
 
 }
