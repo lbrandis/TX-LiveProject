@@ -22,12 +22,7 @@ public class TransactionService {
 		t1.setMerchantLogo("Amazon");
 		t1.setType("Credit");
 		
-		Transaction t2 = new Transaction();
-		Transaction t3 = new Transaction();
-		Transaction t4 = new Transaction();
-		Transaction t5 = new Transaction();
-		
-		List<Transaction> transactions = Arrays.asList(t1,t2,t3,t4,t5);
+
 		List<Transaction> aTran = Arrays.asList(t1);
 		
 		return aTran;
