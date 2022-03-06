@@ -1,30 +1,33 @@
 package com.txmanager.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.txmanager.domain.Transaction;
+import com.txmanager.entity.Transaction;
+import com.txmanager.repositories.TransactionRepository;
+
+
+
 
 @Service
 public class TransactionService {
+	
+	private final TransactionRepository repository;
+	
+    @Autowired
+    public TransactionService(final TransactionRepository repository) {
+        this.repository = repository;
+    }
 
+	
 	public List<Transaction> findAllByAccountNumber(Integer accountNumber)
 	{
-		Transaction t1 = new Transaction();
-		t1.setAccountNumber(accountNumber);
-		t1.setAmount(100.00);
-		t1.setCurrency("USD");
-		t1.setDate(new Date());
-		t1.setMerchantLogo("logo.png");
-		t1.setMerchantLogo("Amazon");
-		t1.setType("Credit");
-		
-
-		List<Transaction> aTran = Arrays.asList(t1);
-		
-		return aTran;
+	
+		return repository.findByAccountNumber(accountNumber);
 	}
 }
