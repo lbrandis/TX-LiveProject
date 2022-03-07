@@ -1,15 +1,6 @@
 package com.txmanager;
-import java.util.Date;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import com.txmanager.entity.Transaction;
-import com.txmanager.repositories.TransactionRepository;
 
 
 @SpringBootApplication

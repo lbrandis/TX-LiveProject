@@ -1,24 +1,26 @@
 package com.txmanager.controller;
 
+import static org.junit.Assert.assertEquals;
+
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+
+import com.txmanager.TransactionManagerApplication;
+
 import static io.restassured.RestAssured.*;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = {TransactionManagerApplication.class})
 class TransactionComponentTest {
-	@LocalServerPort
-	private int port;
 
-	
 	@Test
 	void testApplicationEndToEnd() 
-	{
+	{	
 		given()
 		.get("http://localhost:8080/transactions/12345")
 		.then()
         .statusCode(Matchers.is(200));
-
 	}
 }
